@@ -10,5 +10,5 @@ chat_cols = st.columns(len(LLMS))
 
 for index, chat_col in enumerate(chat_cols):
     with chat_col:
-        with chat_messages('user'):
+        with st.chat_message('user'):
             st.write(LLMS[index])       
