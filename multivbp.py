@@ -13,5 +13,5 @@ for llm in LLMS:
 
 for index, chat_col in enumerate(chat_windows):
     with chat_col:
-        with chat_messages(LLMS[index])('user'):
+        with chat_messages[LLMS[index]]('user'):
             st.write(LLMS[index])       
