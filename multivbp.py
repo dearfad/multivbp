@@ -26,3 +26,7 @@ for index, chat_col in enumerate(chat_cols):
         for message in st.session_state[llm]:
             with st.chat_message(st.session_state[llm]["role"]):
                 st.text(message["content"])
+
+if inquiry:
+    for llm in LLMS:
+        st.session_state[llm].append({'role': 'user', 'content': inquiry})
