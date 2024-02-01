@@ -4,11 +4,10 @@ st.info('Multi LLMs Chat for Virtual Breast Patient')
 
 inquiry = st.chat_input()
 
-llms = st.columns(3)
+LLMS = ['ZhipuAI', 'qwen']
 
-with llms[0]:
-    st.write('0')
+chat_windows = st.columns(lens(LLMS))
 
-
-with llms[1]:
-    st.write('1')
+for index, chat_window in enumerate(chat_windows):
+    with chat_window:
+        st.write(LLMS[index])
