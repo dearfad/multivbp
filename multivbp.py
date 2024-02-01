@@ -14,7 +14,7 @@ for llm in LLMS:
 
 for index, chat_col in enumerate(chat_cols):
     with chat_col:
-        llm = LLM[index]
+        llm = LLMS[index]
         with st.chat_message('user'):
             st.write(llm)   
             st.write(st.session_state[llm])
