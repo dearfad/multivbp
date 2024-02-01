@@ -30,3 +30,4 @@ for index, chat_col in enumerate(chat_cols):
 if inquiry:
     for llm in LLMS:
         st.session_state[llm].append({'role': 'user', 'content': inquiry})
+        st.rerun()
