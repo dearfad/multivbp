@@ -8,7 +8,12 @@ LLMS = ['ZhipuAI', 'Qwen', 'BaiChuan']
 
 chat_cols = st.columns(len(LLMS))
 
+for llm in LLMS:
+    if llm not in st.session_state:
+        st.session_state.llm = []
+
 for index, chat_col in enumerate(chat_cols):
     with chat_col:
         with st.chat_message('user'):
-            st.write(LLMS[index])       
+            st.write(LLMS[index])   
+            st.write(st.session_state[LLMS[index]])
