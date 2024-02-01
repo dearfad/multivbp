@@ -1,3 +1,5 @@
 import streamlit as st
 
-st.write('hi')
+st.title('Multi LLMs for Virtual Breast Patient')
+
+inquiry = st.chat_input()
