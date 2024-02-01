@@ -10,7 +10,7 @@ chat_cols = st.columns(len(LLMS))
 
 for llm in LLMS:
     if llm not in st.session_state:
-        st.session_state[llm] = []
+        st.session_state[llm] = ['help']
 
 for index, chat_col in enumerate(chat_cols):
     with chat_col:
