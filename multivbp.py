@@ -8,10 +8,7 @@ LLMS = ['ZhipuAI', 'Qwen', 'BaiChuan']
 
 chat_cols = st.columns(len(LLMS))
 
-for llm in LLMS:
-    chat_messages[llm] = st.chat_message('user')
-
-for index, chat_col in enumerate(chat_windows):
+for index, chat_col in enumerate(chat_cols):
     with chat_col:
-        with chat_messages[LLMS[index]]('user'):
+        with chat_messages('user'):
             st.write(LLMS[index])       
