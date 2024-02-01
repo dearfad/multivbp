@@ -6,8 +6,12 @@ inquiry = st.chat_input()
 
 LLMS = ['ZhipuAI', 'Qwen', 'BaiChuan']
 
-chat_windows = st.columns(len(LLMS))
+chat_cols = st.columns(len(LLMS))
 
-for index, chat_window in enumerate(chat_windows):
-    with chat_window:
-        st.write(LLMS[index])
+for llm in LLMS:
+    chat_messages[llm] = st.chat_message()
+
+for index, chat_col in enumerate(chat_windows):
+    with chat_col:
+        with chat_messages(LLMS[index])('user'):
+            st.write(LLMS[index])       
