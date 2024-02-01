@@ -1,5 +1,5 @@
 import streamlit as st
 
-st.title('Multi LLMs for Virtual Breast Patient')
+st.info('Multi LLMs Chat for Virtual Breast Patient')
 
 inquiry = st.chat_input()
