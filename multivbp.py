@@ -40,7 +40,7 @@ def zhipuai(messages):
         model="glm-4",
         messages=messages,
     )
-    st.write(response)
+    st.write(response.choices[0].message)
     return response
 
 if inquiry:
@@ -48,6 +48,6 @@ if inquiry:
         st.session_state[llm].append({'role': 'user', 'content': inquiry})
         if llm=='ZhipuAI':
             response = zhipuai(st.session_state[llm])
-            st.session_state[llm].append(response)
+            st.session_state[llm].append(response.choices[0].message)
             st.write(st.session_state[llm])
     # st.rerun()
