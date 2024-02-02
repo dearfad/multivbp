@@ -27,8 +27,8 @@ for index, chat_col in enumerate(chat_cols):
     with chat_col:
         llm = LLMS[index]
         for message in st.session_state[llm]:
-            with st.chat_message(message["role"]):
-                if message['role'] != 'system':
+            if message['role'] != 'system':
+                with st.chat_message(message["role"]):
                     st.text(message["content"])
 
 if inquiry:
