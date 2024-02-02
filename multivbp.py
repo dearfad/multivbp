@@ -49,4 +49,4 @@ if inquiry:
             response = zhipuai(st.session_state[llm])
             st.session_state[llm].append(response)
             st.write(st.session_state[llm])
-    st.rerun()
+    # st.rerun()
