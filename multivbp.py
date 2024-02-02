@@ -48,4 +48,5 @@ if inquiry:
         if llm=='ZhipuAI':
             response = zhipuai(st.session_state[llm])
             st.session_state[llm].append(response)
+            st.write(st.session_state[llm])
     st.rerun()
