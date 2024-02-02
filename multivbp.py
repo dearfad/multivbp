@@ -29,7 +29,7 @@ for index, chat_col in enumerate(chat_cols):
         for message in st.session_state[llm]:
             if message['role'] != 'system':
                 with st.chat_message(message["role"]):
-                    st.text(message["content"])
+                    st.write(message["content"])
 
 
 def zhipuai(messages):
