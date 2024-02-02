@@ -40,6 +40,7 @@ def zhipuai(messages):
         model="glm-4",
         messages=messages,
     )
+    st.write(response)
     return response
 
 if inquiry:
