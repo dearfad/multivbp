@@ -28,7 +28,6 @@ for index, chat_col in enumerate(chat_cols):
     with chat_col:
         llm = LLMS[index]
         for message in st.session_state[llm]:
-            st.write(message['role'])
             if message['role'] != 'system':
                 with st.chat_message(message["role"]):
                     st.text(message["content"])
@@ -40,14 +39,12 @@ def zhipuai(messages):
         model="glm-4",
         messages=messages,
     )
-    st.write(response.choices[0].message.content)
-    return response
+    return {'role': 'assistant', 'content': response.choices[0].message.content}
 
 if inquiry:
     for llm in LLMS:
         st.session_state[llm].append({'role': 'user', 'content': inquiry})
         if llm=='ZhipuAI':
             response = zhipuai(st.session_state[llm])
-            st.session_state[llm].append(response.choices[0].message.content)
-            st.write(st.session_state[llm])
-    # st.rerun()
+            st.session_state[llm].append(response)
+    st.rerun()
