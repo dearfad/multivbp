@@ -1,6 +1,6 @@
 import streamlit as st
 
-st.set_page_config(page_title=None, page_icon=None, layout="centered", initial_sidebar_state="wide", menu_items=None)
+st.set_page_config(layout="wide")
 
 st.info('Multi LLMs Chat for Virtual Breast Patient')
 
