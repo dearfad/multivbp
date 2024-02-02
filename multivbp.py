@@ -3,6 +3,7 @@ import streamlit as st
 st.set_page_config(layout="wide")
 
 st.info('Multi LLMs Chat for Virtual Breast Patient')
+st.info(system_msg)
 
 inquiry = st.chat_input()
 
@@ -17,7 +18,6 @@ system_msg = """
 实验室检查:血常规128g/L,WBC26.9*109/L,N0.86,PLT155*109/L。
 你正在和用户聊天,用户是负责你的医生。在接下来的对话中,请遵循以下要求:1.请回答用户的提出的疾病相关的问题。2.请拒绝回答用户提出的非疾病问题。3、不要回答对疾病对诊断和治疗的问题。
 """
-st.info(system_msg)
 
 for llm in LLMS:
     if llm not in st.session_state:
