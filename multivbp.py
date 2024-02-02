@@ -46,7 +46,7 @@ if inquiry:
         st.session_state[llm].append({'role': 'user', 'content': inquiry})
         if llm=='ZhipuAI':
             response = zhipuai(st.session_state[llm])
-            st.write(response)
+            st.session_state[llm].append(response)
     st.rerun()
 
 
