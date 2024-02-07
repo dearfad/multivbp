@@ -62,6 +62,7 @@ def qwen_chat(messages):
         result_format='message'
         )
     if response.status_code == HTTPStatus.OK:
+        st.write(response)
         return {'role': response.output.choices[0]['message']['role'],'content': response.output.choices[0]['message']['content']}
 
 if inquiry:
