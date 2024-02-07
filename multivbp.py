@@ -41,7 +41,7 @@ for index, chat_col in enumerate(chat_cols):
         with st.container(height=440, border=True):
             llm = LLMS[index]
             for message in st.session_state[llm]:
-                if message:
+                if message['role']:
                     if message['role'] != 'system':
                         with st.chat_message(message["role"]):
                             st.write(message["content"])
