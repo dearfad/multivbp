@@ -63,7 +63,7 @@ def qwen_chat(messages):
         )
     # if response.status_code == HTTPStatus.OK:
     #     return {'role': 'assistant', 'content': response.output.choices[0]['message']['content']}
-    return {'role': 'assistant', 'content': response}
+    return {'role': 'assistant', 'content': messages}
 
 if inquiry:
     for llm in LLMS:
