@@ -58,8 +58,6 @@ def qwen_chat(messages):
     response = Generation.call(
         model='qwen-1.8b-chat',
         messages=messages,
-        # messages = [
-        # {'role': 'user', 'content': '用萝卜、土豆、茄子做饭，给我个菜谱'}],
         seed=random.randint(1, 10000),
         result_format='message'
         )
@@ -75,7 +73,6 @@ if inquiry:
             response = zhipuai_chat(st.session_state[llm])
             st.session_state[llm].append(response)
         if llm=='Qwen':
-            st.info(st.session_state[llm])
             response = qwen_chat(st.session_state[llm])
             st.session_state[llm].append(response)
     st.rerun()
