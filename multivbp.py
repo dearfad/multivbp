@@ -41,10 +41,10 @@ for index, chat_col in enumerate(chat_cols):
         with st.container(height=440, border=True):
             llm = LLMS[index]
             for message in st.session_state[llm]:
-                st.write(message)
-                if message['role'] != 'system':
-                    with st.chat_message(message["role"]):
-                        st.write(message["content"])
+                if message:
+                    if message['role'] != 'system':
+                        with st.chat_message(message["role"]):
+                            st.write(message["content"])
 
 
 def zhipuai_chat(messages):
