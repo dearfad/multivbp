@@ -41,10 +41,9 @@ for index, chat_col in enumerate(chat_cols):
         with st.container(height=440, border=True):
             llm = LLMS[index]
             for message in st.session_state[llm]:
-                if not message['role'] is None:
-                    if message['role'] != 'system':
-                        with st.chat_message(message["role"]):
-                            st.write(message["content"])
+                if message['role'] != 'system':
+                    with st.chat_message(message["role"]):
+                        st.write(message["content"])
 
 
 def zhipuai_chat(messages):
@@ -64,7 +63,7 @@ def qwen_chat(messages):
         )
     if response.status_code == HTTPStatus.OK:
         print(response)
-        return {'role': response.output.choices[0]['message']['role'],'content': response.output.choices[0]['message']['content']}
+        return {'role': 'assistant','content': response.output.choices[0]['message']['content']}
 
 if inquiry:
     for llm in LLMS:
