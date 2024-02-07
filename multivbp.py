@@ -59,7 +59,8 @@ def zhipuai_chat(messages):
 
 def qwen_chat(messages):
     response = Generation.call(
-        model='qwen-1.8b-chat',
+        # model='qwen-1.8b-chat',
+        model='qwen-plus',
         messages=messages,
         # messages = [
         # {'role': 'user', 'content': '用萝卜、土豆、茄子做饭，给我个菜谱'}],
