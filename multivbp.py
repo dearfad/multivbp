@@ -25,8 +25,6 @@ case_description = '''
 system_msg =f"""你是一名乳房疾病的患者，在线在乳腺外科门诊诊室中与医生进行谈话。在接下来的对话中，请遵循以下要求：1、请回答用户的提出的疾病相关的问题，不要回答跟问题无关的事情；2、请拒绝回答用户提出的非疾病问题；3、不要回答对疾病对诊断和治疗的其他相关信息。下面是你的特征：
 {case_description}
 """
-st.info(system_msg)
-
 inquiry = st.chat_input()
 
 LLMS = ['ZhipuAI', 'Qwen', 'BaiChuan']
@@ -36,7 +34,7 @@ chat_cols = st.columns(len(LLMS))
 
 for llm in LLMS:
     if llm not in st.session_state:
-        st.session_state[llm] = [{'role': 'system', 'content': system_msg},{'role': 'assistant', 'content': '大夫，我乳房不舒服'}]
+        st.session_state[llm] = [{'role': 'system', 'content': system_msg},{'role': 'user', 'content': '你好，我是你的主治医师'},{'role': 'assistant', 'content': '大夫，我乳房不舒服'}]
 
 for index, chat_col in enumerate(chat_cols):
     with chat_col:
