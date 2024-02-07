@@ -56,7 +56,7 @@ def zhipuai_chat(messages):
 
 def qwen_chat(messages):
     response = Generation.call(
-        model='qwen-1.8b-chat',
+        model='qwen-plus',
         messages=messages,
         seed=random.randint(1, 10000),
         result_format='message'
