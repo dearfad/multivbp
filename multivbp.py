@@ -61,9 +61,9 @@ def qwen_chat(messages):
         seed=random.randint(1, 10000),
         result_format='message'
         )
-    if response.status_code == HTTPStatus.OK:
-        print(response)
-        return {'role': 'assistant','content': response.output.choices[0]['message']['content']}
+    # if response.status_code == HTTPStatus.OK:
+    #     return {'role': 'assistant', 'content': response.output.choices[0]['message']['content']}
+    return {'role': 'assistant', 'content': 'test'}
 
 if inquiry:
     for llm in LLMS:
