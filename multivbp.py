@@ -61,7 +61,7 @@ def qwen_chat(messages):
         messages = [
         {'role': 'user', 'content': '用萝卜、土豆、茄子做饭，给我个菜谱'}],
         seed=random.randint(1, 10000),
-        result_format='text'
+        result_format='message'
         )
     if response.status_code == HTTPStatus.OK:
         return {'role': 'assistant', 'content': response}
