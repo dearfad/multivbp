@@ -1,5 +1,9 @@
 import streamlit as st
 from zhipuai import ZhipuAI
+import random
+from http import HTTPStatus
+from dashscope import Generation
+from dashscope.api_entities.dashscope_response import Role
 
 st.set_page_config(layout="wide")
 
@@ -42,7 +46,7 @@ for index, chat_col in enumerate(chat_cols):
                         st.write(message["content"])
 
 
-def zhipuai(messages):
+def zhipuai_chat(messages):
     client = ZhipuAI(api_key=st.secrets['zhipuai'])
     response = client.chat.completions.create(
         model="glm-4",
@@ -50,10 +54,23 @@ def zhipuai(messages):
     )
     return {'role': 'assistant', 'content': response.choices[0].message.content}
 
+def qwen_chat(messages):
+    response = Generation.call(
+        'qwen-1.8b-chat',
+        messages=messages,
+        seed=random.randint(1, 10000),
+        result_format='message'
+        )
+    if response.status_code == HTTPStatus.OK:
+        return {'role': response.output.choices[0]['message']['role'],'content': response.output.choices[0]['message']['content']}
+
 if inquiry:
     for llm in LLMS:
         st.session_state[llm].append({'role': 'user', 'content': inquiry})
         if llm=='ZhipuAI':
-            response = zhipuai(st.session_state[llm])
+            response = zhipuai_chat(st.session_state[llm])
+            st.session_state[llm].append(response)
+        if llm=='Qwen':
+            response = qwen_chat(st.session_state[llm])
             st.session_state[llm].append(response)
     st.rerun()
