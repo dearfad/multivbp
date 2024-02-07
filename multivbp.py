@@ -25,11 +25,12 @@ for llm in LLMS:
 
 for index, chat_col in enumerate(chat_cols):
     with chat_col:
-        llm = LLMS[index]
-        for message in st.session_state[llm]:
-            if message['role'] != 'system':
-                with st.chat_message(message["role"]):
-                    st.write(message["content"])
+        with st.container(height=None, border=None):
+            llm = LLMS[index]
+            for message in st.session_state[llm]:
+                if message['role'] != 'system':
+                    with st.chat_message(message["role"]):
+                        st.write(message["content"])
 
 
 def zhipuai(messages):
