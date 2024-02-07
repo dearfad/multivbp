@@ -75,6 +75,7 @@ if inquiry:
             response = zhipuai_chat(st.session_state[llm])
             st.session_state[llm].append(response)
         if llm=='Qwen':
+            st.info(st.session_state[llm])
             response = qwen_chat(st.session_state[llm])
             st.session_state[llm].append(response)
     st.rerun()
