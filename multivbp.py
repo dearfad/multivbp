@@ -9,6 +9,8 @@ st.set_page_config(layout="wide")
 
 st.title('Multi LLMs Chat for Virtual Breast Patient')
 
+info_placeholder = st.empty()
+
 case_description = '''
 姓名：王淑芬
 性别：女
@@ -45,6 +47,7 @@ for index, chat_col in enumerate(chat_cols):
                     with st.chat_message(message["role"]):
                         st.write(message["content"])
 
+info_placeholder.write(st.session_state['Qwen'])
 
 def zhipuai_chat(messages):
     client = ZhipuAI(api_key=st.secrets['zhipuai'])
