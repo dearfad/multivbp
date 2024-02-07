@@ -41,6 +41,7 @@ for index, chat_col in enumerate(chat_cols):
         with st.container(height=440, border=True):
             llm = LLMS[index]
             for message in st.session_state[llm]:
+                st.write(message)
                 if message['role'] != 'system':
                     with st.chat_message(message["role"]):
                         st.write(message["content"])
@@ -62,7 +63,6 @@ def qwen_chat(messages):
         result_format='message'
         )
     if response.status_code == HTTPStatus.OK:
-        st.write(response)
         return {'role': response.output.choices[0]['message']['role'],'content': response.output.choices[0]['message']['content']}
 
 if inquiry:
