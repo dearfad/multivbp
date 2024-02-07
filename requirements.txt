@@ -3,3 +3,4 @@ streamlit
 
 # LLM
 zhipuai
+dashscope
